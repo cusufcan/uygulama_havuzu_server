@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "http": {
+    "UygulamaHavuzuServer.Development": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
