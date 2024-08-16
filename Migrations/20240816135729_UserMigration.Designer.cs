@@ -11,7 +11,7 @@ using uygulama_havuzu_server.Infrastructure.Data;
 namespace uygulama_havuzu_server.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240816130413_UserMigration")]
+    [Migration("20240816135729_UserMigration")]
     partial class UserMigration
     {
         /// <inheritdoc />
@@ -32,7 +32,7 @@ namespace uygulama_havuzu_server.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("PasswordHash")
+                    b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("text");
 
