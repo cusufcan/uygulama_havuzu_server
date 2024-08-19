@@ -13,6 +13,15 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<AuthService>();
 
+builder.Services.AddCors(options => {
+    options.AddPolicy("AllowMyOrigin",
+        builder => {
+            builder.WithOrigins("http://localhost:4200/")
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+        });
+});
+
 builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
