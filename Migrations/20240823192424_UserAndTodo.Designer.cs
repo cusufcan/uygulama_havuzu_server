@@ -11,8 +11,8 @@ using uygulama_havuzu_server.Infrastructure.Data;
 namespace uygulama_havuzu_server.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240816135729_UserMigration")]
-    partial class UserMigration
+    [Migration("20240823192424_UserAndTodo")]
+    partial class UserAndTodo
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,6 +23,26 @@ namespace uygulama_havuzu_server.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
+
+            modelBuilder.Entity("uygulama_havuzu_server.Core.Entities.Todo", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("Completed")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Todos");
+                });
 
             modelBuilder.Entity("uygulama_havuzu_server.Core.Entities.User", b =>
                 {

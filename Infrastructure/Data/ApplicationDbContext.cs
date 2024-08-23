@@ -7,5 +7,6 @@ namespace uygulama_havuzu_server.Infrastructure.Data {
         }
 
         public DbSet<User> Users { get; set; }
+        public DbSet<Todo> Todos { get; set; }
     }
 }

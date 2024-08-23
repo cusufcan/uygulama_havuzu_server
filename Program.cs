@@ -10,17 +10,13 @@ var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(connectionString));
 
+// Auth
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<AuthService>();
 
-builder.Services.AddCors(options => {
-    options.AddPolicy("AllowMyOrigin",
-        builder => {
-            builder.WithOrigins("http://localhost:4200/")
-            .AllowAnyHeader()
-            .AllowAnyMethod();
-        });
-});
+// Todo
+builder.Services.AddScoped<ITodoRepository, TodoRepository>();
+builder.Services.AddScoped<TodoService>();
 
 builder.Services.AddControllers();
 
@@ -28,6 +24,11 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+app.UseCors(x => x
+    .AllowAnyOrigin()
+    .AllowAnyMethod()
+    .AllowAnyHeader());
 
 if (app.Environment.IsDevelopment()) {
     app.UseSwagger();
