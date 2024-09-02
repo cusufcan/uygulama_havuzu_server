@@ -17,6 +17,7 @@ namespace uygulama_havuzu_server.Infrastructure.ExternalServices {
             var lang = _configuration["OpenWeather:Lang"];
             var key = _configuration["OpenWeather:Key"];
             var units = _configuration["OpenWeather:Units"];
+
             var url = $"{baseUrl}?q={cityName}&lang={lang}&appid={key}&units={units}";
 
             var response = await _httpClient.GetAsync(url);
