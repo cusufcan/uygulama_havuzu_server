@@ -13,6 +13,10 @@
 
     git clone https://github.com/cusufcan/uygulama_havuzu_server
 
+## Ekran Görüntüleri:
+
+![Swagger SS](Images/ss1.png)
+
 ## Kullanılan Teknolojiler:
 
 - C#
