@@ -13,9 +13,9 @@ namespace uygulama_havuzu_server.Infrastructure.ExternalServices {
         }
 
         public async Task<WeatherModel?> GetWeatherAsync(string cityName) {
-            var key = _configuration["OpenWeather:Key"];
-            var lang = _configuration["OpenWeather:Lang"];
             var baseUrl = _configuration["OpenWeather:BaseUrl"];
+            var lang = _configuration["OpenWeather:Lang"];
+            var key = _configuration["OpenWeather:Key"];
             var units = _configuration["OpenWeather:Units"];
             var url = $"{baseUrl}?q={cityName}&lang={lang}&appid={key}&units={units}";
 
