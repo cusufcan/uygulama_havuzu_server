@@ -24,8 +24,8 @@ namespace uygulama_havuzu_server.Infrastructure.ExternalServices {
             if (response.IsSuccessStatusCode) {
                 var responseData = await response.Content.ReadFromJsonAsync<WeatherModel>();
                 if (responseData != null && responseData.Sys != null && responseData.Sys.Sunrise != null) {
-                    responseData.Sys.SunriseString = UnixTimeHelper.ConvertUnixTimeToDateTimeString(responseData.Sys.Sunrise ?? 0);
-                    responseData.Sys.SunsetString = UnixTimeHelper.ConvertUnixTimeToDateTimeString(responseData.Sys.Sunset ?? 0);
+                    responseData.Sys.SunriseString = UnixTimeHelper.UnixTimeToDateTime(responseData.Sys.Sunrise ?? 0);
+                    responseData.Sys.SunsetString = UnixTimeHelper.UnixTimeToDateTime(responseData.Sys.Sunset ?? 0);
                 }
                 return responseData;
             } else {
