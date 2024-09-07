@@ -3,8 +3,7 @@ using uygulama_havuzu_server.Core.Entities.Todo;
 using uygulama_havuzu_server.Core.Interfaces;
 using uygulama_havuzu_server.Infrastructure.Data;
 
-namespace uygulama_havuzu_server.Infrastructure.Repositories
-{
+namespace uygulama_havuzu_server.Infrastructure.Repositories {
     public class TodoRepository : ITodoRepository {
         private readonly ApplicationDbContext _context;
 
