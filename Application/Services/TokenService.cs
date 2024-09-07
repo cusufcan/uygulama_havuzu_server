@@ -14,7 +14,7 @@ namespace uygulama_havuzu_server.Application.Services {
         }
 
         public Task<GenerateTokenResponse> GenerateToken(GenerateTokenRequest request) {
-            SymmetricSecurityKey symmetricSecurityKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(_configuration["AppSettings:Secret"]));
+            SymmetricSecurityKey key = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(_configuration["AppSettings:Secret"]));
 
             var now = DateTime.UtcNow;
 
@@ -26,7 +26,7 @@ namespace uygulama_havuzu_server.Application.Services {
                 },
                 notBefore: now,
                 expires: now.AddDays(1),
-                signingCredentials: new SigningCredentials(symmetricSecurityKey, SecurityAlgorithms.HmacSha256)
+                signingCredentials: new SigningCredentials(key, SecurityAlgorithms.HmacSha256)
             );
 
             return Task.FromResult(new GenerateTokenResponse {
